@@ -1,0 +1,1 @@
+ALTER TABLE trace_flows RENAME TO demo_entity;
