@@ -13,5 +13,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BookRepository extends JpaRepository<Book, Integer> {
 
-    Optional<Book> findByTitle(String searchTitle);
+    Optional<Book> findByTitleLike(String searchTitle);
 }

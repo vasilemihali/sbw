@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
 public interface DemoEntityRepository extends JpaRepository<DemoEntity, Integer> {
 
 
-    public Optional<DemoEntity> getWhereDescriptionLike(String descLike);
+    Optional<DemoEntity> findByDescriptionContaining(String descLike);
 
 }

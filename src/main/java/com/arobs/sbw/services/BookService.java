@@ -2,6 +2,7 @@ package com.arobs.sbw.services;
 
 import com.arobs.sbw.model.Book;
 import com.arobs.sbw.repositories.BookRepository;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    public Book findBookForTitle(String titleSearch) {
-        return bookRepository.findByTitle(titleSearch).get();
+    public Optional<Book> findBookForTitle(String titleSearch) {
+        return bookRepository.findByTitleLike(titleSearch);
     }
 }
