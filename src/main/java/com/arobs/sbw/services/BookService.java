@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class BookService {
 
+    public static final String ENHANCED_BY_SERVICE = " Enhanced by Service";
     private BookRepository bookRepository;
 
     @Autowired
@@ -22,6 +23,14 @@ public class BookService {
     }
 
     public Optional<Book> findBookForTitle(String titleSearch) {
-        return bookRepository.findByTitleLike(titleSearch);
+
+        final Optional<Book> byTitleLike = bookRepository.findByTitleLike(titleSearch);
+
+        if (byTitleLike.isPresent()) {
+            final Book book = byTitleLike.get();
+            book.setAuthor(book.getAuthor() + ENHANCED_BY_SERVICE);
+        }
+
+        return byTitleLike;
     }
 }
